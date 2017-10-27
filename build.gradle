@@ -1,0 +1,41 @@
+//声明gradle脚本自身需要使用的资源
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.1.RELEASE")
+    }
+}
+
+group 'com.dreamport'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+def jdkVersion = 1.8
+sourceCompatibility = jdkVersion
+targetCompatibility = jdkVersion
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+jar {
+    baseName = 'dreamport-commons'
+    version = '0.1.0'
+}
+
+repositories {
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.baomidou:mybatis-plus:2.1.4'
+    //swagger-jersey
+    compile("com.wordnik:swagger-jersey2-jaxrs_2.10:1.3.8") {
+        exclude(module: 'jsr311-api')
+    }
+}
