@@ -1,9 +1,10 @@
 package com.dreamport.domain;
 
-import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.Version;
+import com.baomidou.mybatisplus.enums.IdType;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
@@ -20,6 +21,7 @@ import java.util.Date;
 public class User implements Serializable {
     private static final long serialVersionUID = 8535292206324547880L;
 
+    @TableId(type= IdType.AUTO)
     private Long id;
     /**
      * 用户名
